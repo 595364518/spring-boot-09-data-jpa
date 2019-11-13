@@ -5,6 +5,7 @@ import com.mengxuegu.springboot.entity.User;
 import com.mengxuegu.springboot.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -18,7 +19,7 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     UserRepository userRepository;
 
-    @Transactional//该方法开启事务管理
+    @Transactional(isolation = Isolation.DEFAULT)//该方法开启事务管理
     @Override
     public Boolean addUser(User user) {
         //正常添加数据
